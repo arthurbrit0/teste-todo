@@ -3,12 +3,12 @@ import { nanoid } from "nanoid";
 
 // função do componente TodoInput
 function TodoInput(props) {
-  const [text, setText] = useState(''); // estado inicial do texto da task
+  const [name, setName] = useState(''); // estado inicial do nome da task
   const [description, setDescription] = useState(''); // estado inicial da descrição da task
 
-  // função para alterar o estado do texto da task de acordo com o input do usuário
+  // função para alterar o estado do nome da task de acordo com o input do usuário
   function handleChange(e) {
-    setText(e.target.value);
+    setName(e.target.value);
   }
 
   // função para alterar o estado da descrição da task de acordo com o input do usuário
@@ -17,29 +17,29 @@ function TodoInput(props) {
   }
 
   // função para lidar com o envio do formulario 
-  function handleSubmit(e) { 
+  function handleSubmit(e) {
     e.preventDefault(); // previnir o default do formulario (não recarrega a página)
-    if(text.trim() === ""){ // se o texto estiver vazio
+    if(name.trim() === ""){ // se o nome estiver vazio
       alert("Por favor, insira o conteúdo a ser adicionado."); // alerta o usuário
-    } else if (text) { 
-      props.onSubmit({ // chama a função onSubmit passando um objeto com o id, texto e descrição
+    } else if (name) {
+      props.onSubmit({ // chama a função onSubmit passando um objeto com o id, nome e descrição
         id: `todo-${nanoid()}`, // gera um id único para a task
-        text: text,
+        name: name,
         description: description 
       });
-      setText(""); // reseta o estado do texto
+      setName(""); // reseta o estado do nome
       setDescription(""); // reseta o estado da descrição
     }
   }
 
-  // retorna o formulário com o input do texto e da descrição da task, alem do botao de envio
+  // retorna o formulário com o input do nome e da descrição da task, alem do botao de envio
   return (
     <form className='todo-form' onSubmit={handleSubmit}>
       <input
         type="text"
         className='todo-input' 
         placeholder='Digite uma tarefa para adicionar à lista'
-        value={text}
+        value={name}
         onChange={handleChange}
         />
       <input
