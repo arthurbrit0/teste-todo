@@ -1,7 +1,10 @@
 import React from "react";
 
+// função para o componente BotaoFiltro
 function BotaoFiltro (props) {
+  // classe vai variar de acordo com o estado do botão (isPressed)
   const botaoClass = props.isPressed ? "btn toggle-btn pressed" : "btn toggle-btn";
+  // renderiza o botão
   return (
     <button
       type="button"
@@ -15,4 +18,4 @@ function BotaoFiltro (props) {
   )
 }
 
-export default BotaoFiltro;
+export default BotaoFiltro; // exporta o componente BotaoFiltro
